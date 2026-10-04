@@ -1,0 +1,16 @@
+{
+	"name": "devtools-active-port",
+	"version": "1.0.0",
+	"description": "Resolve DevToolsActivePort for Chromium-based browsers",
+	"type": "module",
+	"main": "./index.js",
+	"scripts": {
+		"test": "node --test"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"repository": "https://github.com/jessetane/devtools-active-port",
+	"author": "jesse.tane@gmail.com",
+	"license": "MIT"
+}
