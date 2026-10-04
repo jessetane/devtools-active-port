@@ -2,7 +2,7 @@
 Resolve DevToolsActivePort for Chromium-based browsers.
 
 ## Why
-When Chromium-based browsers (Chrome, Edge, Brave, etc.) are launched with remote debugging enabled (`--remote-debugging-port`), they write a temporary `DevToolsActivePort` file inside their user data directory containing the active port number and WebSocket path.
+When Chromium-based browsers (Chrome, Edge, Brave, etc.) have remote debugging active (e.g. launched with `--remote-debugging-port` or enabled via browser opt-in prompts), they write a temporary `DevToolsActivePort` file inside their user data directory containing the active port number and WebSocket endpoint path.
 
 This lightweight, zero-dependency module resolves and parses that file across macOS, Linux, and Windows for all standard Chromium browsers.
 
