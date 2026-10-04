@@ -2,13 +2,10 @@
 Zero-config active DevTools port resolution for Chromium-based browsers.
 
 ## Why
-Using AI to inspect or debug something in your browser should be quick and easy. Nobody wants to restart a browser with multiple profiles, dozens of open tabs, and active tab groups in the middle of their workday just to enable remote debugging.
+Opening the WebSocket at `DevToolsActivePort` automatically triggers a consent dialog users can click through to enable remote debugging on demand. No restart, command line flags or other configuration is necessary, just need to find the file.
 
 ## How
-
-* Chromium drops a `DevToolsActivePort` file in its user data directory containing the active port and WebSocket path.
-* Sniffs out default profile paths for Chrome, Edge, Brave, Canary, Arc, etc across macOS, Linux, and Windows.
-* Auto-discovers whatever browser is currently running, or targets a specific browser / profile on demand.
+Searches default user data directories for Chrome, Edge, Brave, Canary, Arc, etc across macOS, Linux, and Windows to parse the active port and WebSocket path. Auto-discovers whatever browser is running, or targets a specific browser / profile on demand.
 
 ## Usage
 ```javascript
