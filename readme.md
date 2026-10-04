@@ -1,10 +1,10 @@
 # devtools-active-port
-Resolve DevToolsActivePort for Chromium-based browsers.
+Zero-config active DevTools port resolution for Chromium-based browsers.
 
 ## Why
-When Chromium-based browsers (Chrome, Edge, Brave, etc.) have remote debugging active (e.g. launched with `--remote-debugging-port` or enabled via browser opt-in prompts), they write a temporary `DevToolsActivePort` file inside their user data directory containing the active port number and WebSocket endpoint path.
+Whenever a Chromium-based browser (Chrome, Edge, Brave, Canary, etc.) is running, it maintains an active `DevToolsActivePort` file inside its user data directory containing the active port and WebSocket endpoint.
 
-This lightweight, zero-dependency module resolves and parses that file across macOS, Linux, and Windows for all standard Chromium browsers.
+No startup flags, no manual port hunting, and no child process management. Just pass a browser name (or nothing at all) and get the active debugging endpoint instantly across macOS, Linux, and Windows.
 
 ## Usage
 ```javascript
