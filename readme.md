@@ -30,7 +30,7 @@ const customInfo = resolveDevToolsActivePort({ userDataDir: '/path/to/profile' }
 
 Pass an options object or browser name string:
 
-- `browser`: Preset browser name or alias to search (`chrome`, `canary`, `chromium`, `edge`, `brave`, `arc`, `vivaldi`, `opera`). Normalization handles casing, spaces, and hyphens automatically (e.g. `'Google Chrome'`, `'msedge'`, `'Brave Browser'`).
+- `browser`: Target a specific browser by name or alias (e.g. `'Google Chrome'`, `'msedge'`, `'brave'`).
 - `userDataDir`: Path to a custom user data directory containing `DevToolsActivePort` (overrides `browser`).
 
 If no options are passed, standard paths for all supported browsers are checked in order.
