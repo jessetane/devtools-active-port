@@ -7,9 +7,6 @@
 	"scripts": {
 		"test": "node --test"
 	},
-	"engines": {
-		"node": ">=22"
-	},
 	"repository": "https://github.com/jessetane/devtools-active-port",
 	"author": "jesse.tane@gmail.com",
 	"license": "MIT"
