@@ -2,10 +2,10 @@
 Zero-config active DevTools port resolution for Chromium-based browsers.
 
 ## Why
-Opening the WebSocket at `DevToolsActivePort` automatically triggers a consent dialog users can click through to enable remote debugging on demand. No restart, command line flags or other configuration is necessary, just need to find the file.
+Opening the WebSocket at `DevToolsActivePort` automatically triggers a consent dialog users can click through to enable remote debugging on demand. No restart, command line flags or other configuration is necessary, just read the file and go.
 
 ## How
-Searches default user data directories for Chrome, Edge, Brave, Canary, Arc, etc across macOS, Linux, and Windows to parse the active port and WebSocket path. Auto-discovers whatever browser is running, or targets a specific browser / profile on demand.
+Searches default user data directories for Chrome, Edge, Brave, Opera, and others across macOS, Linux, and Windows to parse the active port and WebSocket path. Auto-discovers whatever browser is running, or targets a specific browser / profile by name / path
 
 ## Usage
 ```javascript
@@ -25,8 +25,8 @@ const customInfo = resolveDevToolsActivePort({ userDataDir: '/path/to/profile' }
 ## Options
 Pass an options object or browser name string:
 
-- `userDataDir`: Path to a custom user data directory containing `DevToolsActivePort` (highest precedence).
 - `browser`: Preset browser name to search (`chrome`, `canary`, `chromium`, `edge`, `brave`, `arc`, `vivaldi`, `opera`).
+- `userDataDir`: Path to a custom user data directory containing `DevToolsActivePort` (overrides browser).
 
 If no options are passed, standard paths for all supported browsers are checked in order.
 
