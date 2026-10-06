@@ -8,11 +8,11 @@ test('resolveDevToolsActivePort reads from userDataDir', t => {
 	const dir = mkdtempSync(join(tmpdir(), 'devtools-active-port-test-'))
 	const file = join(dir, 'DevToolsActivePort')
 	try {
-		writeFileSync(file, '9666\n/devtools/browser/def-456\n')
+		writeFileSync(file, '9666\ndevtools/browser/def-456\n')
 		const info = resolveDevToolsActivePort({ userDataDir: dir })
 		t.assert.ok(info)
 		t.assert.equal(info.port, 9666)
-		t.assert.equal(info.path, '/devtools/browser/def-456')
+		t.assert.equal(info.path, 'devtools/browser/def-456')
 		const infoDefault = resolvePort({ userDataDir: dir })
 		t.assert.equal(infoDefault.port, 9666)
 	} finally {
@@ -38,11 +38,11 @@ test('precedence: userDataDir overrides browser in resolveDevToolsActivePort', t
 	const dir = mkdtempSync(join(tmpdir(), 'devtools-active-port-test-'))
 	const file = join(dir, 'DevToolsActivePort')
 	try {
-		writeFileSync(file, '9888\n/devtools/browser/override-dir\n')
+		writeFileSync(file, '9888\ndevtools/browser/override-dir\n')
 		const info = resolveDevToolsActivePort({ userDataDir: dir, browser: 'nonexistent-browser' })
 		t.assert.ok(info)
 		t.assert.equal(info.port, 9888)
-		t.assert.equal(info.path, '/devtools/browser/override-dir')
+		t.assert.equal(info.path, 'devtools/browser/override-dir')
 	} finally {
 		rmSync(dir, { recursive: true, force: true })
 	}
