@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join, isAbsolute } from 'node:path'
 
@@ -101,7 +101,7 @@ function getBaseDirs (platform, home) {
 }
 
 function readActivePortFile (filePath) {
-	if (!filePath || !existsSync(filePath)) return null
+	if (!filePath) return null
 	try {
 		const content = readFileSync(filePath, 'utf-8').trim().split('\n')
 		if (content.length >= 2) {
@@ -137,21 +137,12 @@ function getBrowserPaths (browser) {
 
 function resolveDevToolsActivePort (opts = {}) {
 	if (typeof opts === 'string') opts = { browser: opts }
-	if (opts.userDataDir || opts.dir) {
-		return readActivePortFile(join(opts.userDataDir || opts.dir, 'DevToolsActivePort'))
+	if (opts.userDataDir) {
+		return readActivePortFile(join(opts.userDataDir, 'DevToolsActivePort'))
 	}
-	if (opts.browser) {
-		const paths = getBrowserPaths(opts.browser)
-		for (const dir of paths) {
-			const res = readActivePortFile(join(dir, 'DevToolsActivePort'))
-			if (res) return res
-		}
-		return null
-	}
-	const browsers = ['chrome', 'canary', 'chromium', 'edge', 'brave', 'arc', 'vivaldi', 'opera']
+	const browsers = opts.browser ? [opts.browser] : ['chrome', 'canary', 'chromium', 'edge', 'brave', 'arc', 'vivaldi', 'opera']
 	for (const b of browsers) {
-		const paths = getBrowserPaths(b)
-		for (const dir of paths) {
+		for (const dir of getBrowserPaths(b)) {
 			const res = readActivePortFile(join(dir, 'DevToolsActivePort'))
 			if (res) return res
 		}
