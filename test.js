@@ -52,3 +52,16 @@ test('resolveDevToolsActivePort handles browser string and unknown browser grace
 	const info = resolveDevToolsActivePort('nonexistent-browser-name')
 	t.assert.equal(info, null)
 })
+
+test('resolveDevToolsActivePort handles browser normalization', t => {
+	const info1 = resolveDevToolsActivePort('Google Chrome')
+	const info2 = resolveDevToolsActivePort('google-chrome')
+	const info3 = resolveDevToolsActivePort('Microsoft Edge')
+	const info4 = resolveDevToolsActivePort('msedge')
+	const info5 = resolveDevToolsActivePort('Brave Browser')
+	t.assert.equal(typeof info1 === 'object', true)
+	t.assert.equal(typeof info2 === 'object', true)
+	t.assert.equal(typeof info3 === 'object', true)
+	t.assert.equal(typeof info4 === 'object', true)
+	t.assert.equal(typeof info5 === 'object', true)
+})
